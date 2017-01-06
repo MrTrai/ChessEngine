@@ -1,0 +1,108 @@
+package com.chess.engine.pieces;
+
+public class Rook {
+
+    public final static BoardPosition HORIZONTAL_RIGHT_1 = new BoardPosition(1, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_2 = new BoardPosition(2, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_3 = new BoardPosition(3, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_4 = new BoardPosition(4, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_5 = new BoardPosition(5, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_6 = new BoardPosition(6, 0);
+    public final static BoardPosition HORIZONTAL_RIGHT_7 = new BoardPosition(7, 0);
+
+    public final static BoardPosition HORIZONTAL_LEFT_1 = new BoardPosition(-1, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_2 = new BoardPosition(-2, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_3 = new BoardPosition(-3, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_4 = new BoardPosition(-4, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_5 = new BoardPosition(-5, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_6 = new BoardPosition(-6, 0);
+    public final static BoardPosition HORIZONTAL_LEFT_7 = new BoardPosition(-7, 0);
+
+    public final static BoardPosition VERTICAL_UP_1 = new BoardPosition(0, 1);
+    public final static BoardPosition VERTICAL_UP_2 = new BoardPosition(0, 2);
+    public final static BoardPosition VERTICAL_UP_3 = new BoardPosition(0, 3);
+    public final static BoardPosition VERTICAL_UP_4 = new BoardPosition(0, 4);
+    public final static BoardPosition VERTICAL_UP_5 = new BoardPosition(0, 5);
+    public final static BoardPosition VERTICAL_UP_6 = new BoardPosition(0, 6);
+    public final static BoardPosition VERTICAL_UP_7 = new BoardPosition(0, 7);
+
+    public final static BoardPosition VERTICAL_DOWN_1 = new BoardPosition(0, -1);
+    public final static BoardPosition VERTICAL_DOWN_2 = new BoardPosition(0, -2);
+    public final static BoardPosition VERTICAL_DOWN_3 = new BoardPosition(0, -3);
+    public final static BoardPosition VERTICAL_DOWN_4 = new BoardPosition(0, -4);
+    public final static BoardPosition VERTICAL_DOWN_5 = new BoardPosition(0, -5);
+    public final static BoardPosition VERTICAL_DOWN_6 = new BoardPosition(0, -6);
+    public final static BoardPosition VERTICAL_DOWN_7 = new BoardPosition(0, -7);
+
+    public final static BoardPosition[] ALLOWED_MOVES = {
+        HORIZONTAL_RIGHT_1
+        HORIZONTAL_RIGHT_2
+        HORIZONTAL_RIGHT_3
+        HORIZONTAL_RIGHT_4
+        HORIZONTAL_RIGHT_5
+        HORIZONTAL_RIGHT_6
+        HORIZONTAL_RIGHT_7
+                          
+        HORIZONTAL_LEFT_1 
+        HORIZONTAL_LEFT_2 
+        HORIZONTAL_LEFT_3 
+        HORIZONTAL_LEFT_4 
+        HORIZONTAL_LEFT_5 
+        HORIZONTAL_LEFT_6 
+        HORIZONTAL_LEFT_7 
+                          
+        VERTICAL_UP_1 
+        VERTICAL_UP_2 = ne
+        VERTICAL_UP_3 = ne
+        VERTICAL_UP_4 = ne
+        VERTICAL_UP_5 = ne
+        VERTICAL_UP_6 = ne
+        VERTICAL_UP_7 = ne
+                          
+        VERTICAL_DOWN_1 = 
+        VERTICAL_DOWN_2 = 
+        VERTICAL_DOWN_3 = 
+        VERTICAL_DOWN_4 = 
+        VERTICAL_DOWN_5 = 
+        VERTICAL_DOWN_6 = 
+        VERTICAL_DOWN_7 = 
+    };
+
+    public Bishop(BoardPosition piecePosition, PieceColor pieceColor) {
+        super(piecePosition, pieceColor);
+    }
+
+    @Override
+    public List<Move> calculateLegalMoves(final Board board) {
+        BoardPosition potentialMove;
+        List<Move> legalMoves = new ArrayList<Move>();
+
+        for (BoardPosition each : ALLOWED_MOVES) {
+            potentialMove.setX( this.piecePosition.getX() + each.getX() );
+            potentialMove.setY( this.piecePosition.getY() + each.getY() );
+
+            if (BoardUtils.isValidCoordinate(potentialMove)) {
+                final Tile targetedTile = board.getTile(potentialMove);
+                if ( !targetedTile.isOccupied() ) {
+                    //Move is still not implemented here
+                    legalMoves.add(new MajorMove(board, this, potentialMove));
+                } else {
+                    //if the tile selected is Occupied
+                    final Piece targetedPiece = targetedTile.getPiece();
+                    //Check if the piece is enemy or friend
+                    final PieceColor targetedPieceColor = targetedPiece.getPieceColor();
+                    //Enemy detected
+                    if (this.pieceColor != targetedPieceColor) {
+                        //Different type of move here for attacking
+                        //Attack Move
+                        legalMoves.add(new AttackMove(board, this, potentialMove, targetedPiece));
+                    }
+                }
+            }
+        }
+
+
+        return ImmutableList.copyOf(legalMoves);
+    }
+
+}

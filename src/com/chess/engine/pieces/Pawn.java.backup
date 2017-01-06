@@ -1,0 +1,71 @@
+package com.chess.engine.pieces;
+
+import com.chess.engine.PieceColor;
+
+public class Pawn extends Piece {
+    public final static BoardPosition OFFSET_VERTICAL = new BoardPosition(0, 1);
+
+    private final int UP = 1;
+    private final int DOWN = -1;
+    private final int UP_OFFSET_FIRST_MOVE = 2;
+    private final int DOWN_OFFSET_FIRST_MOVE = -2;
+    private boolean firstMove = true;
+
+    public final static BoardPosition[] ALLOWED_MOVES = {
+        OFFSET_VERTICAL
+    };
+
+    public Bishop(BoardPosition piecePosition, PieceColor pieceColor) {
+        super(piecePosition, pieceColor);
+    }
+
+    @Override
+    public List<Move> calculateLegalMoves(final Board board) {
+        BoardPosition potentialMove;
+        List<Move> legalMoves = new ArrayList<Move>();
+
+        for (BoardPosition each : ALLOWED_MOVES) {
+
+            if (isFirstMove()) {
+                
+            }
+
+            if (this.isWhite()) {
+                potentialMove.setX( this.piecePosition.getX() + each.getX() );
+                potentialMove.setY( this.piecePosition.getY() + (each.getY() * UP_1) );
+            } else {
+                potentialMove.setX( this.piecePosition.getX() + each.getX() );
+                potentialMove.setY( this.piecePosition.getY() + (each.getY() * DOWN_1) );
+            }
+
+            if (BoardUtils.isValidCoordinate(potentialMove)) {
+                final Tile targetedTile = board.getTile(potentialMove);
+                if ( !targetedTile.isOccupied() ) {
+                    //Move is still not implemented here
+                    legalMoves.add(new MajorMove(board, this, potentialMove));
+                } else {
+                    //if the tile selected is Occupied
+                    final Piece targetedPiece = targetedTile.getPiece();
+                    //Check if the piece is enemy or friend
+                    final PieceColor targetedPieceColor = targetedPiece.getPieceColor();
+                    //Enemy detected
+                    if (this.pieceColor != targetedPieceColor) {
+                        //Different type of move here for attacking
+                        //Attack Move
+                        legalMoves.add(new AttackMove(board, this, potentialMove, targetedPiece));
+                    }
+                }
+            }
+
+        }
+        return ImmutableList.copyOf(legalMoves);
+    }
+
+    private void isFirstMove() {
+        if (firstMove) {
+            firstMove = false;
+            return true;
+        }
+        return false;
+    }
+}

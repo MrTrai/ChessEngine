@@ -1,0 +1,53 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BLACK	engine/PieceColor.java	/^    BLACK$/;"	e	enum:PieceColor	file:
+Board	engine/board/Board.java	/^public class Board {$/;"	c
+BoardPosition	engine/board/BoardPosition.java	/^    public BoardPosition() {$/;"	m	class:BoardPosition
+BoardPosition	engine/board/BoardPosition.java	/^    public BoardPosition(int x, int y) {$/;"	m	class:BoardPosition
+BoardPosition	engine/board/BoardPosition.java	/^public class BoardPosition {$/;"	c
+EMPTY_MAP_CACHE	engine/board/Tile.java	/^    private static final Map<BoardPosition, EmptiedTile> EMPTY_MAP_CACHE = createEmptyTileMap();$/;"	f	class:Tile	file:
+EmptiedTile	engine/board/Tile.java	/^        private EmptiedTile(BoardPosition coordinate) {$/;"	m	class:Tile.EmptiedTile	file:
+EmptiedTile	engine/board/Tile.java	/^    public static final class EmptiedTile extends Tile {$/;"	c	class:Tile
+Knight	engine/pieces/Knight.java	/^    public Knight(int piecePosition, PieceColor pieceColor) {$/;"	m	class:Knight
+Knight	engine/pieces/Knight.java	/^public class Knight extends Piece {$/;"	c
+Move	engine/board/Move.java	/^public class Move {$/;"	c
+OccupiedTile	engine/board/Tile.java	/^        private OccupiedTile(BoardPosition coordinate, Piece piece) {$/;"	m	class:Tile.OccupiedTile	file:
+OccupiedTile	engine/board/Tile.java	/^    public static final class OccupiedTile extends Tile {$/;"	c	class:Tile
+Piece	engine/pieces/Piece.java	/^    public Piece(BoardPosition position, PieceColor pieceColor) {$/;"	m	class:Piece
+Piece	engine/pieces/Piece.java	/^public abstract class Piece {$/;"	c
+PieceColor	engine/PieceColor.java	/^public enum PieceColor {$/;"	g
+Tile	engine/board/Tile.java	/^    private Tile(BoardPosition coordinate) {$/;"	m	class:Tile	file:
+Tile	engine/board/Tile.java	/^public abstract class Tile {$/;"	c
+WHITE	engine/PieceColor.java	/^    WHITE,$/;"	e	enum:PieceColor	file:
+calculateLegalMoves	engine/pieces/Knight.java	/^    public List<Move> calculateLegalMoves() {$/;"	m	class:Knight
+calculateLegalMoves	engine/pieces/Piece.java	/^    public abstract List<Move> calculateLegalMoves(final Board board);$/;"	m	class:Piece
+com.chess.engine	engine/PieceColor.java	/^package com.chess.engine;$/;"	p
+com.chess.engine.board	engine/board/Board.java	/^package com.chess.engine.board;$/;"	p
+com.chess.engine.board	engine/board/BoardPosition.java	/^package com.chess.engine.board;$/;"	p
+com.chess.engine.board	engine/board/Move.java	/^package com.chess.engine.board;$/;"	p
+com.chess.engine.board	engine/board/Tile.java	/^package com.chess.engine.board;$/;"	p
+com.chess.engine.pieces	engine/pieces/Knight.java	/^package com.chess.engine.pieces;$/;"	p
+com.chess.engine.pieces	engine/pieces/Piece.java	/^package com.chess.engine.pieces;$/;"	p
+createEmptyTileMap	engine/board/Tile.java	/^    private static Map<BoardPosition, EmptiedTile> createEmptyTileMap() {$/;"	m	class:Tile	file:
+createTile	engine/board/Tile.java	/^    public static Tile createTile(BoardPosition tileCoordinate, Piece piece) {$/;"	m	class:Tile
+currentPiece	engine/board/Tile.java	/^        private final Piece currentPiece;$/;"	f	class:Tile.OccupiedTile	file:
+getPiece	engine/board/Tile.java	/^        public Piece getPiece() {$/;"	m	class:Tile.EmptiedTile
+getPiece	engine/board/Tile.java	/^        public Piece getPiece() {$/;"	m	class:Tile.OccupiedTile
+getPiece	engine/board/Tile.java	/^    public abstract Piece getPiece();$/;"	m	class:Tile
+getTileCoordinate	engine/board/Tile.java	/^    public BoardPosition getTileCoordinate() {$/;"	m	class:Tile
+getX	engine/board/BoardPosition.java	/^    public int getX() {$/;"	m	class:BoardPosition
+getY	engine/board/BoardPosition.java	/^    public int getY() {$/;"	m	class:BoardPosition
+isOccupied	engine/board/Tile.java	/^        public boolean isOccupied() {$/;"	m	class:Tile.EmptiedTile
+isOccupied	engine/board/Tile.java	/^        public boolean isOccupied() {$/;"	m	class:Tile.OccupiedTile
+isOccupied	engine/board/Tile.java	/^    public abstract boolean isOccupied();$/;"	m	class:Tile
+pieceColor	engine/pieces/Piece.java	/^    protected final PieceColor pieceColor; $/;"	f	class:Piece
+piecePosition	engine/pieces/Piece.java	/^    protected final BoardPosition piecePosition;$/;"	f	class:Piece
+setX	engine/board/BoardPosition.java	/^    public void setX(int x) {$/;"	m	class:BoardPosition
+setY	engine/board/BoardPosition.java	/^    public void setY(int y) {$/;"	m	class:BoardPosition
+tileCoordinate	engine/board/Tile.java	/^    protected final BoardPosition tileCoordinate;$/;"	f	class:Tile
+x	engine/board/BoardPosition.java	/^    private int x;$/;"	f	class:BoardPosition	file:
+y	engine/board/BoardPosition.java	/^    private int y;$/;"	f	class:BoardPosition	file:

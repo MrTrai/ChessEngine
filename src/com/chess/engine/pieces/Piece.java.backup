@@ -1,0 +1,24 @@
+package com.chess.engine.pieces;
+
+import java.util.List;
+
+import com.chess.engine.PieceColor;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.Position;
+import com.chess.engine.board.Move;
+
+public abstract class Piece {
+    protected final BoardPosition piecePosition;
+    protected final PieceColor pieceColor; 
+
+    public Piece(BoardPosition position, PieceColor pieceColor) {
+        this.piecePosition = position;
+        this.pieceColor = pieceColor;
+    }
+
+    public PieceColor getName() {
+        return name;
+    }
+
+    public abstract List<Move> calculateLegalMoves(final Board board);
+}

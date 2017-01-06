@@ -1,0 +1,97 @@
+package com.chess.engine.pieces;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.chess.engine.PieceColor;
+import com.chess.engine.board.Board;
+import com.chess.engine.board.Position;
+import com.chess.engine.board.Move;
+import com.google.common.collect.ImmutableList;
+
+public class Bishop extends Piece {
+
+    public final static BoardPosition DIAGONAL_UP_RIGHT_1 = new BoardPosition(1, 1);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_2 = new BoardPosition(2, 2);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_3 = new BoardPosition(3, 3);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_4 = new BoardPosition(4, 4);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_5 = new BoardPosition(5, 5);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_6 = new BoardPosition(6, 6);
+    public final static BoardPosition DIAGONAL_UP_RIGHT_7 = new BoardPosition(7, 7);
+
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_1 = new BoardPosition(1, -1);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_2 = new BoardPosition(2, -2);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_3 = new BoardPosition(3, -3);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_4 = new BoardPosition(4, -4);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_5 = new BoardPosition(5, -5);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_6 = new BoardPosition(6, -6);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_7 = new BoardPosition(7, -7);
+
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_1 = new BoardPosition(-1, -1);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_2 = new BoardPosition(-2, -2);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_3 = new BoardPosition(-3, -3);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_4 = new BoardPosition(-4, -4);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_5 = new BoardPosition(-5, -5);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_6 = new BoardPosition(-6, -6);
+    public final static BoardPosition DIAGONAL_DOWN_LEFT_7 = new BoardPosition(-7, -7);
+
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_1 = new BoardPosition(1, -1);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_2 = new BoardPosition(2, -2);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_3 = new BoardPosition(3, -3);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_4 = new BoardPosition(4, -4);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_5 = new BoardPosition(5, -5);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_6 = new BoardPosition(6, -6);
+    public final static BoardPosition DIAGONAL_DOWN_RIGHT_7 = new BoardPosition(7, -7);
+
+    public final static BoardPosition[] ALLOWED_MOVES = {
+        DIAGONAL_UP_RIGHT_1,
+        DIAGONAL_UP_RIGHT_2,
+        DIAGONAL_UP_RIGHT_3,
+        DIAGONAL_UP_RIGHT_4,
+        DIAGONAL_UP_RIGHT_5,
+        DIAGONAL_UP_RIGHT_6,
+        DIAGONAL_UP_RIGHT_7,
+
+        DIAGONAL_DOWN_RIGHT_1,
+        DIAGONAL_DOWN_RIGHT_2,
+        DIAGONAL_DOWN_RIGHT_3,
+        DIAGONAL_DOWN_RIGHT_4,
+        DIAGONAL_DOWN_RIGHT_5,
+        DIAGONAL_DOWN_RIGHT_6,
+        DIAGONAL_DOWN_RIGHT_7,
+
+        DIAGONAL_DOWN_LEFT_1 ,
+        DIAGONAL_DOWN_LEFT_2 ,
+        DIAGONAL_DOWN_LEFT_3 ,
+        DIAGONAL_DOWN_LEFT_4 ,
+        DIAGONAL_DOWN_LEFT_5 ,
+        DIAGONAL_DOWN_LEFT_6 ,
+        DIAGONAL_DOWN_LEFT_7 ,
+
+        DIAGONAL_DOWN_RIGHT_1,
+        DIAGONAL_DOWN_RIGHT_2,
+        DIAGONAL_DOWN_RIGHT_3,
+        DIAGONAL_DOWN_RIGHT_4,
+        DIAGONAL_DOWN_RIGHT_5,
+        DIAGONAL_DOWN_RIGHT_6,
+        DIAGONAL_DOWN_RIGHT_7
+    };
+
+    public Bishop(BoardPosition piecePosition, PieceColor pieceColor) {
+        super(piecePosition, pieceColor);
+    }
+
+    @Override
+    public List<Move> calculateLegalMoves(final Board board) {
+        BoardPosition potentialMove;
+        List<Move> legalMoves = new ArrayList<Move>();
+
+        for (BoardPosition each : ALLOWED_MOVES) {
+            potentialMove.setX(   );
+            potentialMove.setY();
+        }
+
+
+        return ImmutableList.copyOf();
+    }
+}

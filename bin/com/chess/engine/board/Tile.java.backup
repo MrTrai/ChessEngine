@@ -1,0 +1,86 @@
+package com.chess.engine.board;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.chess.engine.pieces.Piece;
+import com.google.common.collect.ImmutableMap;
+
+public abstract class Tile {
+    protected final int tileCoordinate;
+    private static final Map<BoardPosition, EmptiedTile> EMPTY_MAP_CACHE = createEmptyTileMap();
+
+    private Tile(int coordinate) {
+        this.tileCoordinate = coordinate;
+    }
+
+    //Create new Occupied tile or get cached Empty tile
+    public static Tile createTile(int tileCoordinate, Piece piece) {
+        return piece != null ?
+            new OccupiedTile(tileCoordinate, piece) :
+            EMPTY_MAP_CACHE.get(tileCoordinate);
+    }
+
+    //initialize EMPTY_MAP
+    //Cache Empty tiles map
+    private static Map<BoardPosition, EmptiedTile> createEmptyTileMap() {
+        final Map<BoardPosition, EmptiedTile> emptyMap = new HashMap<BoardPosition, EmptiedTile>();
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                
+                emptyMap.put(i, new EmptiedTile(i));
+            }
+        }
+
+        for (int i = 0; i < 64; i++) {
+        }
+        //use from Guava dependency
+        return ImmutableMap.copyOf(emptyMap);
+    }
+
+    public int getTileCoordinate() {
+        return tileCoordinate;
+    }
+
+    public abstract boolean isOccupied();
+    public abstract Piece getPiece();
+
+    //Emptied Tile
+    public static final class EmptiedTile extends Tile {
+        private EmptiedTile(int coordinate) {
+            super(coordinate);
+        }
+
+        @Override
+        public boolean isOccupied() {
+            return false;
+        } 
+
+        @Override
+        public Piece getPiece() {
+            return null;
+        }
+    }
+
+    //Occupied Tile 
+    public static final class OccupiedTile extends Tile {
+
+        private final Piece currentPiece;
+
+        private OccupiedTile(int coordinate, Piece piece) {
+            super(coordinate);
+            this.currentPiece = piece;
+        }
+
+        @Override
+        public boolean isOccupied() {
+            return true;
+        } 
+
+        @Override
+        public Piece getPiece() {
+            return currentPiece;
+        }
+    }
+}
